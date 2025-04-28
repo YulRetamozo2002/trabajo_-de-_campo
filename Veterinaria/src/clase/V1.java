@@ -25,6 +25,9 @@ public class V1 extends JFrame {
 	private JTextField txtNM;
 	private JTextField txtRAZA;
 	private JTextField txtSEXO;
+	private JTextField txtEspecie;
+	private JTextField txtPeso;
+	private JTextField txtCorreo;
 
 	/**
 	 * Launch the application.
@@ -47,7 +50,7 @@ public class V1 extends JFrame {
 	 */
 	public V1() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 593, 283);
+		setBounds(100, 100, 756, 354);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -66,7 +69,7 @@ public class V1 extends JFrame {
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Datos Mascota :");
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_1_1.setBounds(10, 145, 122, 14);
+		lblNewLabel_1_1.setBounds(10, 170, 122, 14);
 		contentPane.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Nombre cliente");
@@ -74,7 +77,7 @@ public class V1 extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Nombre mascota");
-		lblNewLabel_2_1.setBounds(20, 170, 112, 14);
+		lblNewLabel_2_1.setBounds(20, 195, 112, 14);
 		contentPane.add(lblNewLabel_2_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("DNI");
@@ -82,19 +85,19 @@ public class V1 extends JFrame {
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Teléfono");
-		lblNewLabel_3_1.setBounds(20, 120, 46, 14);
+		lblNewLabel_3_1.setBounds(20, 117, 46, 14);
 		contentPane.add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Raza");
-		lblNewLabel_3_1_1.setBounds(20, 195, 46, 14);
+		lblNewLabel_3_1_1.setBounds(20, 260, 46, 14);
 		contentPane.add(lblNewLabel_3_1_1);
 		
 		JLabel lblNewLabel_3_1_1_1 = new JLabel("Sexo");
-		lblNewLabel_3_1_1_1.setBounds(20, 218, 46, 14);
+		lblNewLabel_3_1_1_1.setBounds(20, 285, 46, 14);
 		contentPane.add(lblNewLabel_3_1_1_1);
 		
 		txtNC = new JTextField();
-		txtNC.setBounds(115, 67, 223, 20);
+		txtNC.setBounds(125, 70, 226, 20);
 		contentPane.add(txtNC);
 		txtNC.setColumns(10);
 		
@@ -110,21 +113,21 @@ public class V1 extends JFrame {
 		
 		txtNM = new JTextField();
 		txtNM.setColumns(10);
-		txtNM.setBounds(125, 170, 176, 20);
+		txtNM.setBounds(125, 195, 176, 20);
 		contentPane.add(txtNM);
 		
 		txtRAZA = new JTextField();
 		txtRAZA.setColumns(10);
-		txtRAZA.setBounds(125, 192, 129, 20);
+		txtRAZA.setBounds(125, 257, 129, 20);
 		contentPane.add(txtRAZA);
 		
 		txtSEXO = new JTextField();
 		txtSEXO.setColumns(10);
-		txtSEXO.setBounds(125, 215, 129, 20);
+		txtSEXO.setBounds(125, 282, 129, 20);
 		contentPane.add(txtSEXO);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(348, 29, 213, 172);
+		scrollPane.setBounds(361, 29, 369, 245);
 		contentPane.add(scrollPane);
 		
 		JTextArea txtS = new JTextArea();
@@ -137,9 +140,12 @@ public class V1 extends JFrame {
 				String NombreMascota = txtNM.getText();
 				String Raza = txtRAZA.getText();
 				String Sexo = txtSEXO.getText();
+				String Correo = txtCorreo.getText();
+				String Especie = txtEspecie.getText();
+				double Peso = Double.parseDouble(txtPeso.getText());
 				int telefono = Integer.parseInt(txtTELEFONO. getText());
 				int DNI = Integer.parseInt(txtDNI.getText());
-				Veterinaria V = new Veterinaria(NombreCliente, NombreMascota, Raza, Sexo, 35, telefono, DNI);
+				Veterinaria V = new Veterinaria(NombreCliente, NombreMascota, Raza, Sexo, 35, telefono, DNI, Correo, Especie, Peso);
 				Resultado(V);
 			}
 			public void Imprimir(String s) {
@@ -151,18 +157,48 @@ public class V1 extends JFrame {
 				Imprimir("Nombre : " + v.getNombreCliente());
 				Imprimir("teléfono : " + v.getTelefono());
 				Imprimir("DNI : " + v.getDni());
+				Imprimir("Correo : " + v.getCorreo());
 				
 				Imprimir("------------------------");
 				Imprimir("Datos de la mascota");
 				Imprimir("Nombre : " + v.getNombreMascota());
 				Imprimir("Raza : " + v.getRaza());
 				Imprimir("Sexo : " + v.getSexo());
+				Imprimir("Especie : " + v.getEspecie());
+				Imprimir("Peso : " + v.getPeso());
 				
 				Imprimir("------------------------");
 				Imprimir("Monto a pagar por consulta y medicamento es " + v.MontoTotal());
 			}
 		});
-		btnNewButton.setBounds(392, 214, 122, 23);
+		btnNewButton.setBounds(503, 281, 122, 23);
 		contentPane.add(btnNewButton);
+		
+		JLabel lblNewLabel_3_1_2 = new JLabel("Correo");
+		lblNewLabel_3_1_2.setBounds(20, 142, 46, 14);
+		contentPane.add(lblNewLabel_3_1_2);
+		
+		JLabel lblNewLabel_3_1_1_2 = new JLabel("Especie");
+		lblNewLabel_3_1_1_2.setBounds(20, 237, 46, 14);
+		contentPane.add(lblNewLabel_3_1_1_2);
+		
+		JLabel lblNewLabel_3_1_1_2_1 = new JLabel("Peso");
+		lblNewLabel_3_1_1_2_1.setBounds(20, 220, 46, 14);
+		contentPane.add(lblNewLabel_3_1_1_2_1);
+		
+		txtEspecie = new JTextField();
+		txtEspecie.setColumns(10);
+		txtEspecie.setBounds(125, 234, 129, 20);
+		contentPane.add(txtEspecie);
+		
+		txtPeso = new JTextField();
+		txtPeso.setColumns(10);
+		txtPeso.setBounds(125, 217, 129, 20);
+		contentPane.add(txtPeso);
+		
+		txtCorreo = new JTextField();
+		txtCorreo.setColumns(10);
+		txtCorreo.setBounds(125, 139, 129, 20);
+		contentPane.add(txtCorreo);
 	}
 }

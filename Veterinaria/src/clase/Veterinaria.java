@@ -4,9 +4,14 @@ public class Veterinaria {
 	private String nombreCliente, nombreMascota, raza, sexo;
 	private double  PrecioXConsulta = 35;
 	private int telefono, dni;
+	private String correo;
+	private String especie;
+	private double peso;
+	
+	
 	public Veterinaria(String nombreCliente, String nombreMascota, String raza, String sexo, double precioXConsulta,
-			int telefono, int dni) {
-		
+			int telefono, int dni, String correo, String especie, double peso) {
+		super();
 		this.nombreCliente = nombreCliente;
 		this.nombreMascota = nombreMascota;
 		this.raza = raza;
@@ -14,7 +19,11 @@ public class Veterinaria {
 		PrecioXConsulta = precioXConsulta;
 		this.telefono = telefono;
 		this.dni = dni;
+		this.correo = correo;
+		this.especie = especie;
+		this.peso = peso;
 	}
+
 	public String getNombreCliente() {
 		return nombreCliente;
 	}
@@ -56,6 +65,24 @@ public class Veterinaria {
 	}
 	public void setDni(int dni) {
 		this.dni = dni;
+	}
+	public String getCorreo() {
+		return correo;
+	}
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+	public String getEspecie() {
+		return especie;
+	}
+	public void setEspecie(String especie) {
+		this.especie = especie;
+	}
+	public double getPeso() {
+		return peso;
+	}
+	public void setPeso(double peso) {
+		this.peso = peso;
 	}
 	public double MontoTotal() {
 		return PrecioXConsulta + (PrecioXConsulta * 0.18);
