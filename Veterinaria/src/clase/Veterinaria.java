@@ -4,8 +4,7 @@ public class Veterinaria {
 	private String nombreCliente, nombreMascota, raza, sexo;
 	private double  PrecioXConsulta = 35;
 	private int telefono, dni;
-	private String correo;
-	private String especie;
+	private String correo, especie;
 	private double peso;
 	
 	
