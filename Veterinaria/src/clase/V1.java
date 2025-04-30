@@ -168,7 +168,7 @@ public class V1 extends JFrame {
 				Imprimir("Peso : " + v.getPeso());
 				
 				Imprimir("------------------------");
-				Imprimir("Monto a pagar por consulta y medicamento es " + v.MontoTotal());
+				Imprimir("Monto a pagar por consulta y medicamento es: " + v.MontoTotal());
 			}
 			
 		});
