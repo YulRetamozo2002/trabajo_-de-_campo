@@ -132,7 +132,7 @@ public class V1 extends JFrame {
 		
 		JTextArea txtS = new JTextArea();
 		scrollPane.setViewportView(txtS);
-		
+	
 		JButton btnNewButton = new JButton("Procesar Datos");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -145,7 +145,7 @@ public class V1 extends JFrame {
 				double Peso = Double.parseDouble(txtPeso.getText());
 				int telefono = Integer.parseInt(txtTELEFONO. getText());
 				int DNI = Integer.parseInt(txtDNI.getText());
-				Veterinaria V = new Veterinaria(NombreCliente, NombreMascota, Raza, Sexo, 35, telefono, DNI, Correo, Especie, Peso);
+				Veterinaria V = new Veterinaria(NombreCliente, NombreMascota, Raza, Sexo, Correo, Especie, Peso, 35.0, telefono, DNI);
 				Resultado(V);
 			}
 			public void Imprimir(String s) {
@@ -170,8 +170,82 @@ public class V1 extends JFrame {
 				Imprimir("------------------------");
 				Imprimir("Monto a pagar por consulta y medicamento es " + v.MontoTotal());
 			}
+			
 		});
-		btnNewButton.setBounds(503, 281, 122, 23);
+		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtS.setText("");
+				txtNC.setText("");
+				txtTELEFONO.setText("");
+				txtDNI.setText("");
+				txtCorreo.setText("");
+				txtNM.setText("");
+				txtRAZA.setText("");
+				txtSEXO.setText("");
+				txtEspecie.setText("");
+				txtPeso.setText("");
+			}
+		});
+		JButton btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String NombreCliente = txtNC.getText();  
+					String NombreMascota = txtNM.getText();
+					String Raza = txtRAZA.getText();
+					String Sexo = txtSEXO.getText();
+					String Correo = txtCorreo.getText();
+					String Especie = txtEspecie.getText();
+					double Peso = Double.parseDouble(txtPeso.getText());
+					int telefono = Integer.parseInt(txtTELEFONO.getText());
+					int DNI = Integer.parseInt(txtDNI.getText());
+
+					Veterinaria v = new Veterinaria(NombreCliente, NombreMascota, Raza, Sexo, Correo, Especie, Peso, 35.0, telefono, DNI);
+
+					adicionarDatos(v);    
+					limpiarCampos(); 
+				} catch (Exception ex) {
+					txtS.append("Error: verifica que todos los campos estén correctamente llenados.\n");
+				}
+			}
+
+			public void adicionarDatos(Veterinaria v) {
+				txtS.append("------------------------\n");
+				txtS.append("Datos del cliente\n");
+				txtS.append("Nombre : " + v.getNombreCliente() + "\n");
+				txtS.append("Teléfono : " + v.getTelefono() + "\n");
+				txtS.append("DNI : " + v.getDni() + "\n");
+				txtS.append("Correo : " + v.getCorreo() + "\n");
+
+				txtS.append("Datos de la mascota\n");
+				txtS.append("Nombre : " + v.getNombreMascota() + "\n");
+				txtS.append("Raza : " + v.getRaza() + "\n");
+				txtS.append("Sexo : " + v.getSexo() + "\n");
+				txtS.append("Especie : " + v.getEspecie() + "\n");
+				txtS.append("Peso : " + v.getPeso() + "\n");
+
+				txtS.append("Monto a pagar: " + v.MontoTotal() + "\n");
+				txtS.append("\n"); 
+			}
+
+			public void limpiarCampos() {
+				txtNC.setText("");
+				txtNM.setText("");
+				txtRAZA.setText("");
+				txtSEXO.setText("");
+				txtCorreo.setText("");
+				txtEspecie.setText("");
+				txtPeso.setText("");
+				txtTELEFONO.setText("");
+				txtDNI.setText("");
+			}
+		});
+	    btnAdicionar.setBounds(496, 281, 122, 23);
+	    contentPane.add(btnAdicionar);
+		btnEliminar.setBounds(618, 281, 122, 23);
+		contentPane.add(btnEliminar);
+		btnNewButton.setBounds(371, 281, 122, 23);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel_3_1_2 = new JLabel("Correo");
@@ -185,6 +259,7 @@ public class V1 extends JFrame {
 		JLabel lblNewLabel_3_1_1_2_1 = new JLabel("Peso");
 		lblNewLabel_3_1_1_2_1.setBounds(20, 220, 46, 14);
 		contentPane.add(lblNewLabel_3_1_1_2_1);
+		
 		
 		txtEspecie = new JTextField();
 		txtEspecie.setColumns(10);
@@ -200,5 +275,11 @@ public class V1 extends JFrame {
 		txtCorreo.setColumns(10);
 		txtCorreo.setBounds(125, 139, 129, 20);
 		contentPane.add(txtCorreo);
+		
+		
+		
+	
+		
+		
 	}
 }
